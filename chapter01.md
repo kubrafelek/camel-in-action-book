@@ -1,20 +1,22 @@
 ## What is Camel?
 
 Core of the Camel framework is a routing engine—or more precisely, a routing-engine builder.
+
 It allows you to define your own routing rules, decide from which sources to accept messages,
 and determine how to process and send those messages to other destinations.
-Camel uses an integration language that allows you to define complex routing rules, akin to business processes.
+
+Camel uses an integration language that allows you to define complex routing rules
 
 One of the fundamental principles of Camel is that it makes no assumptions about the type of data you need to process.
-This is an important point, because it gives you, the developer,
-an opportunity to integrate any kind of system, without the need to convert your data to a canonical format.
+**This is an important point,** an opportunity to integrate any kind of system, without the need to convert your data to a canonical format.
 
 These architectural choices eliminate the need for unnecessary conversions and make Camel not only faster but also lean.
 
 ## Why use Camel?
 - Routing and mediation engine
-  A routing engine selectively moves a message around, based on the route’s configuration.
-  In Camel’s case,routes are configured with a combination of enterprise integration patterns and a domain-specific language
+  - A routing engine selectively moves a message around, based on the route’s configuration.
+  In Camel’s case,routes are configured with a combination of enterprise integration patterns and 
+  a domain-specific language
 
 - Extensive component library
   These components enable Camel to connect over transports, use APIs, and understand data formats.
@@ -33,61 +35,60 @@ These architectural choices eliminate the need for unnecessary conversions and m
   </route>```
 
 - Payload-agnostic router
-  Camel can route any kind of payload; you aren’t restricted to carrying a normalized format such as XML payloads.
-  This freedom means you don’t have to transform your payload into a canonical format to facilitate routing
+  - Camel can route any kind of payload; you aren’t restricted to carrying a normalized format such as XML payloads.
+  - This freedom means you don’t have to transform your payload into a canonical format to facilitate routing
 
 - Modular and pluggable architecture
-  Camel has a modular architecture, which allows any component to be loaded into Camel,
+  - Camel has a modular architecture, which allows any component to be loaded into Camel,
   regardless of whether the component ships with Camel, is from a third party, or is your own custom creation.
-  You can also configure almost anything in Camel. Many of its features are pluggable and configurable—anything from ID generation,
+  - You can also configure almost anything in Camel. 
+  - Many of its features are pluggable and configurable—anything from ID generation,
   thread management, shutdown sequencer, stream caching, and whatnot.
 
 - Plain Old Java Object (POJO) model
-  Java beans (or Plain Old Java Objects, POJOs) are considered first-class citizens in Camel,
-  and Camel strives to let you use beans anywhere and anytime in your integration projects.
-  In many places, you can extend Camel’s built-in functionality with your own custom code.
+  - Java beans (or Plain Old Java Objects, POJOs) are considered first-class citizens in Camel,
+  and Camel strives to **let you use beans anywhere** and **anytime in your integration projects**.
 
 - Easy configuration
 - Automatic type converters
 - Lightweight core ideal for microservices
 - Cloud ready
-  Camel being cloud-native, also provides many components for connecting with SaaS providers
 - Test kit
-  The test kit contains test-specific components that, for example, can help you mock real endpoints
 - Vibrant community
 - Getting Camel
 
-Camel uses two abstractions for modeling messages
+#### **Camel uses two abstractions for modeling messages**
 
-    org.apache.camel.Message :The fundamental entity containing the data being carried and routed in Camel.
-    org.apache.camel.Exchange:The Camel abstraction for an exchange of messages.
+**org.apache.camel.Message:**  The fundamental entity containing the data being carried and routed in Camel.
+
+**org.apache.camel.Exchange:** The Camel abstraction for an exchange of messages.
     This exchange of messages has an in message, and as a reply an out message.
     
-    - Message
-    Messages are the entities used by systems to communicate with each other when using messaging channels.
-    Camel uses its own ID generator, uniquely
+- Message
+  Messages are the entities used by systems to communicate with each other when using messaging channels.
+  _Camel uses its own ID generator, uniquely_
     
-    - Headers and attachments
-    Headers are values associated with the message, such as sender identifiers, hints about content encoding, 
-    authentication information, and so on. 
-    Headers are name-value pairs; the name is a unique, case-insensitive string, and the value is of type java.lang.Object. 
-    Camel imposes no constraints on the type of the headers. 
-    There are also no constraints on the size of headers or on the number of headers included with a message. 
-    Headers are stored as a map within the message. 
-    A message can also have optional attachments, which are typically used for the web service and email components.
+- Headers and attachments
+Headers are values associated with the message, such as sender identifiers, hints about content encoding, 
+authentication information, and so on. 
+Headers are name-value pairs; the name is a unique, case-insensitive string, and the value is of type java.lang.Object. 
+Camel imposes no constraints on the type of the headers. 
+There are also no constraints on the size of headers or on the number of headers included with a message. 
+Headers are stored as a map within the message. 
+A message can also have optional attachments, which are typically used for the web service and email components.
 
-    - Body
-    The body is of type java.lang.Object, so a message can store any kind of content and any size. 
-    It’s up to the application designer to make sure that the receiver can understand the content of the message. 
-    When the sender and receiver use different body formats, Camel provides mechanisms to transform the data into an acceptable format, 
-    and in those cases the conversion happens automatically with type converters, behind the scenes.
+- Body
+The body is of type java.lang.Object, so a message can store any kind of content and any size. 
+It’s up to the application designer to make sure that the receiver can understand the content of the message. 
+When the sender and receiver use different body formats, Camel provides mechanisms to transform the data into an acceptable format, 
+and in those cases the conversion happens automatically with type converters, behind the scenes.
 
-    - Fault flag
-    Messages also have a fault flag. A few protocols and specifications, such as SOAP Web Services,
-    distinguish between output and fault messages. They’re both valid responses to invoking an operation, 
-    but the latter indicates an unsuccessful outcome. In general, faults aren’t handled by the integration infrastructure. 
-    They’re part of the contract between the client and the server and are handled at the application level.
-    During routing, messages are contained in an exchange.
+- Fault flag
+Messages also have a fault flag. A few protocols and specifications, such as SOAP Web Services,
+distinguish between output and fault messages. They’re both valid responses to invoking an operation, 
+but the latter indicates an unsuccessful outcome. In general, faults aren’t handled by the integration infrastructure. 
+They’re part of the contract between the client and the server and are handled at the application level.
+During routing, messages are contained in an exchange.
 
 Exchange
 An exchange in Camel is the message’s container during routing.
